@@ -15,9 +15,11 @@ logging.basicConfig(filename='/opt/python/log/application.log', level=logging.DE
 
 # Beaker sesion options: store sessions in files in the ./cache directory
 # session_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cache")
+import settings
 session_opts = {
-    'session.type': 'file',
-    'session.data_dir': "./cache",
+    'session.type': 'ext:memcached',
+    'session.lock_dir': './lock',
+    'session.url': settings.MEMCACHED_ENDPOINT + ":" + settings.MEMCACHED_PORT,
     'session.cookie_key': 'beaker',
     'session.cookie_expires': True,
     'session.timeout': 60

@@ -21,3 +21,9 @@ FLASK_DEBUG = 'false' if os.environ.get('FLASK_DEBUG') is None else os.environ.g
 
 # A unguessable secret key to secure session cookies
 SECRET_KEY = "a6f63329aac901501fab1936e1b172e9"
+
+# Get Memcache settings
+# This is where we expect Elastic Beanstalk to put the ElastiCache cluster endpoint
+MEMCACHED_ENDPOINT_FILENAME = "/opt/python/etc/elasticache_endpoint"
+MEMCACHED_ENDPOINT = file(MEMCACHED_ENDPOINT_FILENAME).readline()
+MEMCACHED_PORT = "11211"
